@@ -42,8 +42,8 @@ class PredictClient(AbstractPredictClient):
 
         try:
             result = stub.Predict(request, timeout=request_timeout)
-            logger.info('Got scores with len: ' + str(len(list(result.outputs['scores'].float_val))))
-            return list(result.outputs['scores'].float_val)
+            logger.info('Got predictions.')
+            return list(result.outputs['predictions'])
         except RpcError as e:
             logger.error(e)
             logger.error('Prediction failed!')
