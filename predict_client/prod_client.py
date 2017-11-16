@@ -43,7 +43,7 @@ class PredictClient(AbstractPredictClient):
         try:
             result = stub.Predict(request, timeout=request_timeout)
             logger.info('Got predictions.')
-            return list(result.outputs['predictions'])
+            return result.outputs['sentences']
         except RpcError as e:
             logger.error(e)
             logger.error('Prediction failed!')
